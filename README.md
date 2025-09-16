@@ -1,17 +1,6 @@
 # AutomatedBI - AI-Powered Business Intelligence Dashboard
 
-## 🚩 Portfolio/Showcase
-This project is designed for portfolio and real-world demonstration. See the demo video below!
-
-## 🎬 Demo
-<p align="center">
-	<b>Watch the full demo video here:</b><br>
-	<em>(Insert your video link or embed here)</em>
-</p>
-
----
-
-A production-grade automated business intelligence platform that transforms raw CSV data into professional, interactive dashboards using AI agents and best practices in data visualization.
+A automated business intelligence platform that transforms raw CSV data into professional, interactive dashboards using AI agents and best practices in data visualization.
 
 ## 🚀 Features
 
@@ -29,7 +18,7 @@ A production-grade automated business intelligence platform that transforms raw 
 - **Professional UI**: Modern, responsive design with Tailwind CSS
 - **Scalable Architecture**: Microservices with PostgreSQL and Redis
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 Frontend (React)          Backend (Flask)           AI Layer (CrewAI)
@@ -39,7 +28,7 @@ Frontend (React)          Backend (Flask)           AI Layer (CrewAI)
 └── Export Features   →   └── Background Tasks →   └── Dashboard Designer Agent
 ```
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before setting up the project, ensure you have:
 
@@ -49,7 +38,7 @@ Before setting up the project, ensure you have:
 4. **Node.js 18+** and **Python 3.11+** (for development)
 
 
-## ⚡ Quickstart (Clone & Run)
+## Quickstart (Clone & Run)
 
 ```bash
 git clone <repository-url>
@@ -61,7 +50,7 @@ docker-compose up --build
 
 ---
 
-## 🛠️ Installation & Setup
+##  Installation & Setup
 
 ### 1. Clone the Repository
 ```bash
@@ -141,7 +130,7 @@ npm start
 ```
 
 
-## 📊 Dashboard Tabs Explained
+##  Dashboard Tabs Explained
 
 The AutomatedBI dashboard provides two main tabs, each designed for a specific type of user and analysis:
 
@@ -169,7 +158,7 @@ The AutomatedBI dashboard provides two main tabs, each designed for a specific t
 
 ---
 
-## ✨ What Makes This Project Special?
+##  What Makes This Project Special?
 
 - **Intelligent Chart Selection:** Backend AI agents (CrewAI, Gemini) analyze your data and select the best chart types (bar, donut, histogram, box, scatter, treemap, gauge, KPI cards) based on data cardinality and business context.
 - **Professional, Responsive UI:** Modern React + Tailwind dashboard with mobile-first, executive-grade design. All charts are styled for business use and adapt to any screen size.
@@ -208,7 +197,7 @@ Watch the real-time processing steps:
 - AI-generated insights
 - Export capabilities
 
-## 🔧 Configuration
+##  Configuration
 
 ### File Upload Limits
 - Maximum file size: 50MB
@@ -226,7 +215,7 @@ Watch the real-time processing steps:
 - Automatic cleanup of old datasets (30 days)
 - Optimized indexes for performance
 
-## 🚀 Production Deployment
+##  Production Deployment
 
 ### Docker Production Setup
 ```bash
@@ -316,7 +305,7 @@ AutomatedBI/
 └── README.md
 ```
 
-## 🔍 API Documentation
+##  API Documentation
 
 ### Upload Endpoints
 - `POST /api/upload` - Upload CSV/Excel file
@@ -333,7 +322,7 @@ AutomatedBI/
 - `GET /api/dashboard/{id}/kpis` - Get KPI values
 - `POST /api/dashboard/{id}/chart-data` - Get chart data
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -341,11 +330,9 @@ AutomatedBI/
 4. Add tests
 5. Submit a pull request
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License.
-
-## 🆘 Support
 
 ### Common Issues
 
