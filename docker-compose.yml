@@ -1,0 +1,63 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: automated_bi_db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: automated_bi_backend
+    environment:
+      - DATABASE_URL=postgresql://automated_bi_user:Albert%40123@postgres:5432/automated_bi
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - FLASK_ENV=${FLASK_ENV}
+      - SECRET_KEY=${SECRET_KEY}
+      - GRPC_VERBOSITY=ERROR
+      - GRPC_TRACE=""
+      - GOOGLE_CLOUD_DISABLE_GRPC_LOGS=true
+      - GOOGLE_APPLICATION_CREDENTIALS=""
+      - GLOG_minloglevel=2
+      - PYTHONWARNINGS=ignore
+      - TF_CPP_MIN_LOG_LEVEL=3
+    ports:
+      - "5001:5000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+      - uploads:/app/uploads
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: automated_bi_frontend
+    environment:
+      - REACT_APP_API_URL=http://localhost:5001
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+volumes:
+  postgres_data:
+  uploads:

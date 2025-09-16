@@ -1,0 +1,21 @@
+Name,Age,Salary,Department,Rating,Experience,Location,Performance_Score
+John Doe,28,50000,Engineering,4.2,3,New York,85
+Jane Smith,32,,Marketing,4.8,5,San Francisco,92
+Bob Johnson,25,45000,Sales,,2,Chicago,78
+Alice Brown,29,55000,Engineering,4.1,4,New York,88
+Charlie Wilson,35,70000,Management,4.9,8,Boston,95
+David Lee,,62000,Engineering,3.8,6,Seattle,82
+Emma Davis,31,48000,Marketing,4.5,4,Los Angeles,90
+Frank Miller,45,120000,Management,4.7,15,New York,94
+Grace Taylor,27,42000,Sales,3.9,2,Chicago,76
+Henry Brown,38,85000,Engineering,4.3,10,Seattle,89
+Ivy Chen,29,52000,Marketing,,3,San Francisco,87
+Jack Wilson,33,65000,Sales,4.6,7,Boston,91
+Kate Adams,26,39000,Sales,3.5,1,Chicago,72
+Leo Garcia,42,95000,Engineering,4.8,12,Seattle,93
+Maya Patel,30,,Marketing,4.2,5,Los Angeles,86
+Oliver Jones,36,78000,Management,4.4,9,New York,88
+Paula White,28,46000,Engineering,3.7,3,San Francisco,80
+Quinn Black,34,72000,Sales,4.1,8,Boston,85
+Ryan Green,,58000,Marketing,4.0,4,Chicago,83
+Sarah Blue,31,61000,Engineering,4.6,6,Seattle,90
