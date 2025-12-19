@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { AlertTriangle, CheckCircle, Database, TrendingUp, Brain, Zap, Target, Code, Settings, FileText } from 'lucide-react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
-import { getDataQualityReport, getDatasetData } from '../services/api';
+import { AlertTriangle, CheckCircle, Database, Brain, Zap, Target, Code, Settings, FileText } from 'lucide-react';
+import { getDataQualityReport } from '../services/api';
 import toast from 'react-hot-toast';
 
 const DataQualityTab = ({ datasetId, analysisData }) => {
   const [qualityReport, setQualityReport] = useState(null);
-  const [sampleData, setSampleData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
 
@@ -14,13 +12,9 @@ const DataQualityTab = ({ datasetId, analysisData }) => {
     const loadQualityData = async () => {
       try {
         setLoading(true);
-        const [quality, sample] = await Promise.all([
-          getDataQualityReport(datasetId),
-          getDatasetData(datasetId, 1, 10) // Get first 10 rows for preview
-        ]);
+        const quality = await getDataQualityReport(datasetId);
         
         setQualityReport(quality);
-        setSampleData(sample);
       } catch (err) {
         toast.error('Failed to load quality data');
       } finally {
@@ -46,8 +40,6 @@ const DataQualityTab = ({ datasetId, analysisData }) => {
   }
 
   const qualityData = analysisData?.data_quality || qualityReport?.quality_report || {};
-  const columnStats = qualityReport?.column_analysis?.column_stats || {};
-  const summary = qualityReport?.summary || {};
   
   // Ensure we have the right data structure - prefer qualityReport if analysisData is incomplete
   const hasCompleteAnalysisData = analysisData?.data_quality?.data_preprocessing_requirements && 
@@ -83,17 +75,6 @@ const DataQualityTab = ({ datasetId, analysisData }) => {
       'Not Suitable for ML Without Major Preprocessing': '#DC2626'
     };
     return colors[level] || '#6B7280';
-  };
-
-  // ML readiness radar chart data
-  const getRadarData = (scores) => {
-    return [
-      { subject: 'Missing Data', value: scores?.missing_data || 0, fullMark: 25 },
-      { subject: 'Duplicates', value: scores?.duplicates || 0, fullMark: 20 },
-      { subject: 'Data Types', value: scores?.data_types || 0, fullMark: 20 },
-      { subject: 'Outliers', value: scores?.outliers || 0, fullMark: 15 },
-      { subject: 'Sample Size', value: scores?.sample_size || 0, fullMark: 20 }
-    ];
   };
 
   const TabButton = ({ id, icon: Icon, label, active, onClick }) => (

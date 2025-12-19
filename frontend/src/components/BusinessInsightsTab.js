@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { TrendingUp, DollarSign, Users, BarChart3, Activity, Target, Gauge } from 'lucide-react';
+import { TrendingUp, DollarSign, Users, BarChart3, Activity } from 'lucide-react';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   LineChart, Line, PieChart, Pie, Cell, ScatterChart, Scatter, AreaChart, Area,
-  Legend, ComposedChart, Treemap, RadialBarChart, RadialBar, ReferenceLine
+  Legend, ComposedChart, Treemap, RadialBarChart, RadialBar
 } from 'recharts';
 import { getBusinessInsights, getDashboardKPIs, getDashboardCharts, getChartData } from '../services/api';
 import toast from 'react-hot-toast';
@@ -121,7 +121,6 @@ const BusinessInsightsTab = ({ datasetId, analysisData }) => {
     
     // Enhanced color palettes for professional appearance
     const colors = ['#2563EB', '#16A34A', '#DC2626', '#CA8A04', '#9333EA', '#C2410C', '#0891B2', '#BE185D'];
-    const gradientColors = ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#EC4899', '#06B6D4', '#84CC16'];
 
     // Handle KPI Cards separately - they don't need chart data, they use KPI values
     if (chart.type === 'kpi_cards' || chart.type?.toLowerCase() === 'kpi_cards') {
@@ -281,8 +280,6 @@ const BusinessInsightsTab = ({ datasetId, analysisData }) => {
         
         normalizedData = [...top7, { name: 'Others', value: othersSum }];
       }
-      
-      const total = normalizedData.reduce((sum, item) => sum + (item.value || 0), 0);
       
       return (
         <ResponsiveContainer width="100%" height="100%">
