@@ -2,7 +2,8 @@
 
 A automated business intelligence platform that transforms raw CSV data into professional, interactive dashboards using AI agents and best practices in data visualization.
 
-## 🚀 Features
+## Demo Link: https://drive.google.com/file/d/14qR91S5oXuK8-uSUE_KsVBuFnQd_dMFO/view?usp=sharing
+## Features
 
 ### Core Capabilities
 - **Smart Data Upload**: Automatic validation and quality analysis
